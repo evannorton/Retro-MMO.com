@@ -23,10 +23,8 @@ h1 {
 }
 
 #screenshots {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
     padding: 0 5%;
+    text-align: center;
 }
 
 #screenshots img {
