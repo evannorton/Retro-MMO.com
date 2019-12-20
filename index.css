@@ -22,6 +22,11 @@ h1 {
     text-align: center;
 }
 
+p {
+    font-size: 2em;
+    text-align: center;
+}
+
 #screenshots {
     padding: 0 5%;
     text-align: center;
@@ -32,25 +37,42 @@ h1 {
     width: 47.5%;
 }
 
-p {
-    font-size: 2em;
+#blurb {
+    margin-bottom: 0;
     padding: 0 5%;
-    text-align: center;
 }
 
-a {
-    color: green;
+#links {
+    padding: 0 5%;
 }
 
-@media (max-width: 768px) {
+#links p:first-child a {
+    color: lightsteelblue;
+}
+
+#links p:last-child a {
+    color: orange;
+}
+
+@media (min-width: 768px) {
+    #links {
+        display: flex;
+        justify-content: center;
+    }
+    #links p:first-child {
+        margin-right: 5%;
+    }
+}
+
+@media (max-width: 767px) {
+    p {
+        font-size: 1.5em;
+    }
     #screenshots img {
         width: 90%;
     }
     #screenshots img:not(:last-child) {
         display: none;
-    }
-    p {
-        font-size: 1.75em;
     }
 }
 
