@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "BetterPixels";
+    src: url("./BetterPixels.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Press Start 2P";
+    src: url("./Press Start 2P.ttf") format("truetype")
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-family: "BetterPixels";
+    text-align: center;
+}
+
+h1 {
+    font-family: "Press Start 2P";
+    font-size: 3em;
+    font-weight: 400;
+    line-height: 1;
+}
+
+p {
+    font-size: 2em;
+    text-align: center;
+}
+
+a {
+    color: cornflowerblue;
+}
+
+@media (max-width: 767px) {
+    p {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 525px) {
+    h1 {
+        font-size: 1.75em;
+    }
+}

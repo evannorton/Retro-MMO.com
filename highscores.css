@@ -1,0 +1,31 @@
+p {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table {
+    border-bottom: 1px solid white;
+    border-collapse: collapse;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    font-size: 2em;
+    margin: 0 auto;
+}
+
+table th {
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    font-weight: 400;
+}
+
+@media (min-width: 526px) {
+    p, table {
+        width: 90%;
+    }
+}
+
+@media (max-width: 525px) {
+    p, table {
+        width: 95%;
+    }
+}
