@@ -18,6 +18,18 @@ table th {
     font-weight: 400;
 }
 
+table tbody tr:first-child th:nth-child(2) {
+    color: gold;
+}
+
+table tbody tr:nth-child(2) th:nth-child(2) {
+    color: silver;
+}
+
+table tbody tr:nth-child(3) th:nth-child(2) {
+    color: #cd7f32;
+}
+
 @media (min-width: 526px) {
     p, table {
         width: 90%;
