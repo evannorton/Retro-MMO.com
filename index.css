@@ -23,10 +23,6 @@ p {
     padding: 0 5%;
 }
 
-#links p:first-child a {
-    color: cornflowerblue;
-}
-
 #links p:last-child a {
     color: orange;
 }
