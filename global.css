@@ -31,6 +31,10 @@ a {
     color: cornflowerblue;
 }
 
+.d-none {
+    display: none;
+}
+
 @media (max-width: 767px) {
     p {
         font-size: 1.5em;
