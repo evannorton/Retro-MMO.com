@@ -31,12 +31,18 @@ table tbody tr:nth-child(3) th:nth-child(2) {
 }
 
 @media (min-width: 526px) {
+    table {
+        margin-bottom: 5vw;
+    }
     p, table {
         width: 90%;
     }
 }
 
 @media (max-width: 525px) {
+    table {
+        margin-bottom: 2.5vw;
+    }
     p, table {
         width: 95%;
     }
