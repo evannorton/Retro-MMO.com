@@ -1,7 +1,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://retro-mmo.com</loc>
-        <lastmod>2019-12-29</lastmod>
+        <lastmod>2020-01-03</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
@@ -13,7 +13,7 @@
     </url>
     <url>
         <loc>https://retro-mmo.com/highscores</loc>
-        <lastmod>2019-12-21</lastmod>
+        <lastmod>2020-01-03</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>

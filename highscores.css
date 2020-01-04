@@ -1,25 +1,5 @@
 @import "./global.css";
 
-p {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-table {
-    border-bottom: 1px solid white;
-    border-collapse: collapse;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    font-size: 2em;
-    margin: 0 auto;
-}
-
-table th {
-    border-top: 1px solid white;
-    border-right: 1px solid white;
-    font-weight: 400;
-}
-
 table tbody tr:first-child th:nth-child(2) {
     color: gold;
 }
@@ -30,22 +10,4 @@ table tbody tr:nth-child(2) th:nth-child(2) {
 
 table tbody tr:nth-child(3) th:nth-child(2) {
     color: #cd7f32;
-}
-
-@media (min-width: 526px) {
-    table {
-        margin-bottom: 5vw;
-    }
-    p, table {
-        width: 90%;
-    }
-}
-
-@media (max-width: 525px) {
-    table {
-        margin-bottom: 2.5vw;
-    }
-    p, table {
-        width: 95%;
-    }
 }

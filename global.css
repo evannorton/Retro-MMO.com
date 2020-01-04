@@ -5,11 +5,6 @@
     src: url("./BetterPixels.ttf") format("truetype");
 }
 
-@font-face {
-    font-family: "Press Start 2P";
-    src: url("./Press Start 2P.ttf") format("truetype")
-}
-
 body {
     background-color: black;
     color: white;
@@ -17,33 +12,92 @@ body {
     text-align: center;
 }
 
+header {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1em 0;
+    width: 90%;
+}
+
+header a img:hover {
+    opacity: .75;
+}
+
+header nav ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li:not(:last-child):after {
+    content: "|";
+    position: relative;
+    right: .05em;
+    top: .1em;
+}
+
+header nav ul li a:not(:hover) {
+    text-decoration: none;
+}
+
+main {
+    margin: 0 auto;
+    max-width: 1280px;
+    width: 90%;
+}
+
 h1 {
-    font-family: "Press Start 2P";
     font-size: 3em;
     font-weight: 400;
 }
 
 p {
-    font-size: 2em;
     text-align: center;
 }
 
 a {
-    color: cornflowerblue;
+    color: #5ba8ff;
+}
+
+img {
+    max-width: 100%;
+}
+
+table {
+    border-bottom: 1px solid white;
+    border-collapse: collapse;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    margin-block-end: 1em;
+    margin-block-start: 1em;
+    width: 100%;
+}
+
+table th {
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    font-weight: 400;
 }
 
 .d-none {
     display: none;
 }
 
-@media (max-width: 767px) {
-    p {
-        font-size: 1.5em;
+.bi-image img {
+    width: 47.5%;
+}
+
+@media (min-width: 768px) {
+    p, ul li, table {
+        font-size: 2em;
     }
 }
 
-@media (max-width: 525px) {
-    h1 {
-        font-size: 1.75em;
+@media (max-width: 767px) {
+    p, ul li, table {
+        font-size: 1.5em;
     }
 }
