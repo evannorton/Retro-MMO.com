@@ -70,8 +70,20 @@ table th {
     font-weight: 400;
 }
 
+.d-block {
+    display: block;
+}
+
+.d-inline-block {
+    display: inline-block;
+}
+
 .d-none {
     display: none;
+}
+
+.mt-0 {
+    margin-top: 0;
 }
 
 .bi-image img {
