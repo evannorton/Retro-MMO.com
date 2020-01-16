@@ -14,7 +14,7 @@ body {
 
 header, main, footer {
     max-width: 1280px;
-    margin: 2em auto;
+    margin: 1em auto;
     width: 90%;
 }
 
@@ -40,11 +40,6 @@ header nav ul li:not(:last-child):after {
 
 header nav ul li a:not(:hover) {
     text-decoration: none;
-}
-
-h1 {
-    font-size: 3em;
-    font-weight: 400;
 }
 
 p {
@@ -84,13 +79,13 @@ table th {
 }
 
 @media (min-width: 768px) {
-    p, ul li, table {
+    body {
         font-size: 2em;
     }
 }
 
 @media (max-width: 767px) {
-    p, ul li, table {
+    body {
         font-size: 1.5em;
     }
 }
