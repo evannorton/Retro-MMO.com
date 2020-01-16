@@ -12,10 +12,9 @@ body {
     text-align: center;
 }
 
-header {
+header, main, footer {
     max-width: 1280px;
-    margin: 0 auto;
-    padding: 1em 0;
+    margin: 2em auto;
     width: 90%;
 }
 
@@ -41,12 +40,6 @@ header nav ul li:not(:last-child):after {
 
 header nav ul li a:not(:hover) {
     text-decoration: none;
-}
-
-main {
-    margin: 0 auto;
-    max-width: 1280px;
-    width: 90%;
 }
 
 h1 {
