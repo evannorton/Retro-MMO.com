@@ -86,18 +86,24 @@ table th {
     margin-top: 0;
 }
 
-.bi-image img {
-    width: 47.5%;
-}
 
 @media (min-width: 768px) {
     body {
         font-size: 2em;
+    }
+    .bi-image img {
+        width: 47.5%;
     }
 }
 
 @media (max-width: 767px) {
     body {
         font-size: 1.5em;
+    }
+    .bi-image img {
+        width: 100%;
+    }
+    .bi-image img:first-child {
+        margin-bottom: 1em;
     }
 }
