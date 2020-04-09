@@ -42,6 +42,10 @@ header nav ul li a:not(:hover) {
     text-decoration: none;
 }
 
+h1 {
+    font-weight: normal;
+}
+
 p {
     text-align: center;
 }
