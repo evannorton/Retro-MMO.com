@@ -44,6 +44,7 @@ header nav ul li a:not(:hover) {
 
 h1 {
     font-weight: normal;
+    margin: .5em 0;
 }
 
 p {
