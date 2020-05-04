@@ -11,5 +11,5 @@ fetch("https://oniq-online.herokuapp.com/api/highscores").then((res) => res.json
         `;
         tbody.appendChild(tr);
     });
-    document.querySelector("table").classList.remove("d-none");
+    document.getElementById("highscores").removeAttribute("hidden");
 });
