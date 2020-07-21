@@ -1,13 +1,13 @@
 @import "./global.css";
 
 table tbody tr:first-child th:nth-child(2) {
-    color: gold;
+    color: #ffbb31;
 }
 
 table tbody tr:nth-child(2) th:nth-child(2) {
-    color: silver;
+    color: #d7d7d7;
 }
 
 table tbody tr:nth-child(3) th:nth-child(2) {
-    color: #cd7f32;
+    color: #ad4e1a;
 }
