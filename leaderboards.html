@@ -12,13 +12,13 @@
     </script>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <meta name="description" content="Player rankings for the RetroMMO demo." />
-    <meta name="keywords" content="retrommo highscores, retrommo rankings, retrommo standings" />
+    <meta name="description" content="Player rankings for RetroMMO." />
+    <meta name="keywords" content="retrommo leaderboards, retrommo rankings, retrommo standings" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="canonical" href="https://retro-mmo.com/highscores" />
+    <link rel="canonical" href="https://retro-mmo.com/leaderboards" />
     <link rel="icon" href="./favicon.ico" />
-    <link rel="stylesheet" href="./highscores.css" />
-    <title>Highscores - RetroMMO</title>
+    <link rel="stylesheet" href="./leaderboards.css" />
+    <title>Leaderboards - RetroMMO</title>
 </head>
 
 <body>
@@ -27,10 +27,10 @@
         <nav>
             <ul>
                 <li>
-                    <a href="./play">Tech Demo</a>
+                    <a href="./play">Play</a>
                 </li>
                 <li>
-                    <a href="./highscores">Highscores</a>
+                    <a href="./leaderboards">Leaderboards</a>
                 </li>
                 <li>
                     <a href="https://discord.gg/bUHUKF6" target="_blank">Community</a>
@@ -42,15 +42,13 @@
         </nav>
     </header>
     <main>
-        <h1>Highscores</h1>
-        <table id="highscores" hidden>
+        <h1>Leaderboards</h1>
+        <table id="leaderboards" hidden>
             <thead>
                 <tr>
                     <th scope="col" role="columnheader" data-sort-method="number">#</th>
                     <th scope="col" role="columnheader" data-sort-method="string">Username</th>
-                    <th scope="col" role="columnheader" data-sort-method="number">Lvl</th>
-                    <th scope="col" role="columnheader" data-sort-method="number">Exp</th>
-                    <th scope="col" role="columnheader" data-sort-method="string">Class</th>
+                    <th scope="col" role="columnheader" data-sort-method="number">Experience</th>
                 </tr>
             </thead>
             <tbody>
@@ -61,7 +59,7 @@
         <a></a>
         <p>RetroMMO<sup>TM</sup> is created by Evan Norton.</p>
     </footer>
-    <script src="./highscores.js"></script>
+    <script src="./leaderboards.js"></script>
 </body>
 
 </html>

@@ -1,15 +1,14 @@
-fetch("https://oniq-online.herokuapp.com/api/highscores").then((res) => res.json()).then((rows) => {
+fetch("https://play.retro-mmo.com/leaderboards.json").then((res) => res.json()).then((rows) => {
+    console.log(rows);
     const tbody = document.querySelector("table tbody");
     rows.forEach((row, key) => {
         const tr = document.createElement("tr");
         tr.innerHTML = `
             <th>${key + 1}</th>
             <th>${row.username}</th>
-            <th>${row.level}</th>
-            <th>${row.exp}</th>
-            <th>${row.class}</th>
+            <th>${row.experience}</th>
         `;
         tbody.appendChild(tr);
     });
-    document.getElementById("highscores").removeAttribute("hidden");
+    document.getElementById("leaderboards").removeAttribute("hidden");
 });
