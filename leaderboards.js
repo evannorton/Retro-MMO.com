@@ -1,5 +1,4 @@
 fetch("https://play.retro-mmo.com/leaderboards.json").then((res) => res.json()).then((rows) => {
-    console.log(rows);
     const tbody = document.querySelector("table tbody");
     rows.forEach((row, key) => {
         const tr = document.createElement("tr");
