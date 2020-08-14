@@ -1,0 +1,7 @@
+@import "./global.css";
+
+#rules {
+    display: flex;
+    justify-content: center;
+    text-align: start;
+}
