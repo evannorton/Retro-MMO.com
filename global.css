@@ -51,7 +51,7 @@ header nav ul li a:not(:hover) {
     text-decoration: none;
 }
 
-h1, h2 {
+h1, h2, h3 {
     font-weight: normal;
     margin: .5em 0;
 }
@@ -104,6 +104,12 @@ table th {
     border-top: 1px solid white;
     border-right: 1px solid white;
     font-weight: 400;
+}
+
+.left-centered-text {
+    display: flex;
+    justify-content: center;
+    text-align: start;
 }
 
 @media (min-width: 768px) {
