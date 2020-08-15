@@ -1,12 +1,12 @@
 @import "./global.css";
 
-#full-screen {
-    margin-top: 1em;
-}
-
 main {
     max-width: none;
     width: 100%;
+}
+
+#buttons {
+    margin-bottom: 1em;
 }
 
 iframe {
