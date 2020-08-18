@@ -1,10 +1,5 @@
 @import "./global.css";
 
-main {
-    max-width: none;
-    width: 100%;
-}
-
 #buttons {
     margin-bottom: 1em;
 }
@@ -15,5 +10,7 @@ iframe {
     border-right: none;
     border-top: .05em solid #3f3f3f;
     height: 100vh;
-    width: 100%;
+    margin-left: calc(-5% / .9);
+    position: relative;
+    width: calc(100% / .9);
 }
