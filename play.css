@@ -1,5 +1,9 @@
 @import "./global.css";
 
+main {
+    max-width: none;
+}
+
 #buttons {
     margin-bottom: 1em;
 }
