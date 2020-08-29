@@ -1,7 +1,7 @@
 document.getElementById("reset-password-form").addEventListener("submit", (e) => {
     e.preventDefault();
     const token = new URLSearchParams(window.location.search).get("token");
-    fetch("https://retro-mmo.com/reset-password", {
+    fetch("https://play.retro-mmo.com/reset-password", {
         body: JSON.stringify({
             password: document.getElementById("password").value,
             token
