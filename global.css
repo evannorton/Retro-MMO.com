@@ -114,6 +114,25 @@ table th {
     text-align: start;
 }
 
+#ownership {
+    margin-bottom: .5em;
+}
+
+#social-links {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+#social-links a:hover {
+    opacity: .75;
+}
+
+#social-links a:not(:last-child) {
+    margin-right: .5em;
+}
+
 @media (min-width: 768px) {
     body {
         font-size: 2em;
