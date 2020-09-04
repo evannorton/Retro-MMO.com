@@ -108,6 +108,10 @@ table th {
     font-weight: 400;
 }
 
+input {
+    outline: none;
+}
+
 .left-centered-text {
     display: flex;
     justify-content: center;
