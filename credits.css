@@ -1,1 +1,5 @@
 @import "./global.css";
+
+main ul li a {
+  color: white;
+}
