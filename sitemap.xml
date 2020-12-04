@@ -1,7 +1,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://retro-mmo.com</loc>
-        <lastmod>2020-11-16</lastmod>
+        <lastmod>2020-12-04</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
@@ -13,19 +13,19 @@
     </url>
     <url>
         <loc>https://retro-mmo.com/leaderboards</loc>
-        <lastmod>2020-11-16</lastmod>
+        <lastmod>2020-12-04</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://retro-mmo.com/play</loc>
-        <lastmod>2020-11-28</lastmod>
+        <lastmod>2020-12-04</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://retro-mmo.com/rules</loc>
-        <lastmod>2020-11-16</lastmod>
+        <lastmod>2020-12-04</lastmod>
         <changefreq>always</changefreq>
         <priority>0.5</priority>
     </url>
