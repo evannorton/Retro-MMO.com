@@ -32,6 +32,10 @@ header a img:hover {
     opacity: .75;
 }
 
+header nav ul {
+    margin-bottom: 0;
+}
+
 header nav ul li {
     display: inline;
 }
@@ -45,6 +49,12 @@ header nav ul li:not(:last-child):after {
 
 header nav ul {
     margin-top: 0;
+}
+
+header #players:not(:empty) {
+    color: #ffe737;
+    display: block;
+    margin-bottom: .5em;
 }
 
 h1, h2, h3, h4 {
