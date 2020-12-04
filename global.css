@@ -141,8 +141,8 @@ input {
     body {
         font-size: 2em;
     }
-    .bi-image img {
-        width: 47.5%;
+    .tri-image img {
+        width: 30%;
     }
 }
 
@@ -150,10 +150,7 @@ input {
     body {
         font-size: 1.5em;
     }
-    .bi-image img {
+    .tri-image img {
         width: 100%;
-    }
-    .bi-image img:first-child {
-        margin-bottom: .5em;
     }
 }
