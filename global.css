@@ -57,6 +57,17 @@ header #players:not(:empty) {
     margin-bottom: .5em;
 }
 
+footer nav ul li {
+    display: inline;
+}
+
+footer nav ul li:not(:last-child):after {
+    content: "|";
+    position: relative;
+    right: .05em;
+    top: .1em;
+}
+
 h1, h2, h3, h4 {
     font-weight: normal;
     margin: .5em 0;
@@ -136,7 +147,6 @@ input {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin-bottom: 1em;
 }
 
 #social-links a:hover {

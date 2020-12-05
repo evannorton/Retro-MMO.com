@@ -24,6 +24,12 @@
         <priority>0.5</priority>
     </url>
     <url>
+        <loc>https://retro-mmo.com/privacy</loc>
+        <lastmod>2020-12-04</lastmod>
+        <changefreq>always</changefreq>
+        <priority>0.5</priority>
+    </url>
+    <url>
         <loc>https://retro-mmo.com/rules</loc>
         <lastmod>2020-12-04</lastmod>
         <changefreq>always</changefreq>
