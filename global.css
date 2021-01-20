@@ -1,8 +1,8 @@
 @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css";
 
 @font-face {
-    font-family: "BetterPixels";
-    src: url("./BetterPixels.ttf") format("truetype");
+    font-family: "RetroPixels";
+    src: url("./RetroPixels.ttf") format("truetype");
 }
 
 body {
@@ -11,7 +11,7 @@ body {
     color: white;
     display: flex;
     flex-direction: column;
-    font-family: "BetterPixels";
+    font-family: "RetroPixels";
     text-align: center;
 }
 
@@ -88,6 +88,10 @@ a:not(:hover) {
 ul {
     list-style: none;
     padding-left: 0;
+}
+
+sup {
+    top: -.35em;
 }
 
 button, .button-link {
