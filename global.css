@@ -114,6 +114,12 @@ button:focus {
 }
 
 img {
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    image-rendering: pixelated;
+    -ms-interpolation-mode: nearest-neighbor;
     max-width: 100%;
 }
 
@@ -165,8 +171,8 @@ input {
     body {
         font-size: 2em;
     }
-    .tri-image img {
-        width: 30%;
+    .bi-image img {
+        width: 47.25%;
     }
 }
 
@@ -174,7 +180,7 @@ input {
     body {
         font-size: 1.5em;
     }
-    .tri-image img {
+    .bi-image img {
         width: 100%;
     }
 }
