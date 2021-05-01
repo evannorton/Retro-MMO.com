@@ -3,6 +3,3 @@ addEventListener("message", (event) => {
         location.assign(event.data);
     }
 });
-document.getElementById("full-screen").addEventListener("click", () => {
-    document.getElementById("game").requestFullscreen();
-});
