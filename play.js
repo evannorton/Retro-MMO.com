@@ -3,3 +3,8 @@ addEventListener("message", (event) => {
         location.assign(event.data);
     }
 });
+addEventListener("keydown", (e) => {
+    if (e.key === "F11") {
+        e.preventDefault();
+    }
+});
