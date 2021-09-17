@@ -1,5 +1,5 @@
 addEventListener("message", (event) => {
-    if (event.origin.startsWith("https://play.retro-mmo.com")) {
+    if (event.origin.startsWith("https://play.retro-mmo.com") && typeof event.data === "string") {
         location.assign(event.data);
     }
 });
