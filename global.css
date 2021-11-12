@@ -130,7 +130,7 @@ table {
     width: 100%;
 }
 
-table th {
+table th, table td {
     border-top: 1px solid white;
     border-right: 1px solid white;
     font-weight: 400;
