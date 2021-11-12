@@ -1,13 +1,13 @@
 @import "./global.css";
 
-table tbody tr:first-child th:nth-child(2) {
+table tbody tr:first-child td:nth-child(2) {
     color: #ffbb31;
 }
 
-table tbody tr:nth-child(2) th:nth-child(2) {
+table tbody tr:nth-child(2) td:nth-child(2) {
     color: #a8a8a8;
 }
 
-table tbody tr:nth-child(3) th:nth-child(2) {
+table tbody tr:nth-child(3) td:nth-child(2) {
     color: #ad4e1a;
 }
