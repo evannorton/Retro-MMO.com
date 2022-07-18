@@ -1,0 +1,13 @@
+@import "./global.css";
+
+ul li {
+    margin: 1em 0;
+}
+
+ul li p {
+    margin: 0;
+}
+
+ul li p:last-child {
+    color: #a8a8a8;
+}
