@@ -150,6 +150,10 @@ input {
     margin-bottom: .5em;
 }
 
+#ownership a {
+    color: white;
+}
+
 #social-links {
     align-items: center;
     display: flex;
