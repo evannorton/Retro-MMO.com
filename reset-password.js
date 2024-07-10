@@ -1,9 +1,18 @@
 document.getElementById("reset-password-form").addEventListener("submit", (e) => {
     e.preventDefault();
+    
+    const password = document.getElementById("password").value;
+    const confirmPassword = document.getElementById("confirm-password").value;
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return;
+    }
+
     const token = new URLSearchParams(window.location.search).get("token");
     fetch("https://play.retro-mmo.com/reset-password", {
         body: JSON.stringify({
-            password: document.getElementById("password").value,
+            password,
             token
         }),
         headers: {
