@@ -1,4 +1,7 @@
-fetch("https://play.retro-mmo.com/leaderboards.json").then((res) => res.json()).then((rows) => {
+const urlParams = new URLSearchParams(window.location.search);
+const page = urlParams.get('page');
+
+fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`).then((res) => res.json()).then((rows) => {
     const tbody = document.querySelector("table tbody");
     rows.forEach(({ experience, username }, key) => {
         const tr = document.createElement("tr");
