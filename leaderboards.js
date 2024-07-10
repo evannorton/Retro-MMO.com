@@ -18,3 +18,12 @@ fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`).then((res) =>
     });
     document.getElementById("leaderboards").removeAttribute("hidden");
 });
+
+
+const prevClickHandler = () => {
+    document.location = document.location.pathname + `?page=${parseInt(page)-1}`
+}
+
+const nextClickHandler = () => {
+    document.location = document.location.pathname + `?page=${parseInt(page)+1}`
+}
