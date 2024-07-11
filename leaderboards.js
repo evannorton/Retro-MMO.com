@@ -19,6 +19,15 @@ fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`).then((res) =>
     document.getElementById("leaderboards").removeAttribute("hidden");
 });
 
+if(page <= 1 ){
+    document.getElementById('prevButton').style.display = 'none';
+}
+
+fetch(`https://play.retro-mmo.com/leaderboards.json?page=${parseInt(page)+1}`).then((res) => {
+    if(!res.ok){
+        document.getElementById('nextButton').style.display = 'none';
+    }
+})
 
 const prevClickHandler = () => {
     document.location = document.location.pathname + `?page=${parseInt(page)-1}`
