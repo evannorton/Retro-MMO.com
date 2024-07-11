@@ -1,13 +1,27 @@
 @import "./global.css";
 
-table tbody tr:first-child td:nth-child(2) {
-    color: #ffbb31;
+.pagination-button {
+    margin-right: 5px;
 }
 
-table tbody tr:nth-child(2) td:nth-child(2) {
-    color: #a8a8a8;
+.pagination-label {
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
-table tbody tr:nth-child(3) td:nth-child(2) {
-    color: #ad4e1a;
+.pagination-input {
+    width: 50px;
+    padding: 2px;
+    text-align: center;
+    border-radius: 15px; 
+    background-color: #595956; 
+    border: none;
+    color: white;
+}
+
+#pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
 }
