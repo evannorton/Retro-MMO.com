@@ -1,6 +1,10 @@
 const urlParams = new URLSearchParams(window.location.search);
 const page = urlParams.get('page');
 
+if(!page){
+    document.location = document.location.pathname + `?page=1`
+}
+
 fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`).then((res) => res.json()).then((rows) => {
     const tbody = document.querySelector("table tbody");
     rows.forEach(({ experience, username }, key) => {
