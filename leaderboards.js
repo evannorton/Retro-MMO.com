@@ -7,7 +7,6 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
     const entries = constants["leaderboards-entries"];
     const entriesPerPage = constants["leaderboards-entries-per-page"];
     const lastPage = Math.ceil(entries / entriesPerPage);
-    console.log(lastPage);
 
     const createPagination = () => {
         const pagination = document.createElement("div");
