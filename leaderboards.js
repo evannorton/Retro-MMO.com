@@ -92,7 +92,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
                 if (error.message === 'No more results') {
                     const message = document.createElement('p');
                     message.innerText = 'No more results';
-                    message.style.color = 'yellow';
+                    message.style.color = '#ffe737';
                     const mainElement = document.querySelector('main');
                     mainElement.insertBefore(message, document.getElementById('pagination'));
                     document.getElementById('next-button').innerText = 'Back to start';
