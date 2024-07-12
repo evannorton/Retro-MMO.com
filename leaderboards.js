@@ -72,9 +72,6 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
             .then((rows) => {
                 const tbody = document.querySelector("table tbody");
                 tbody.innerHTML = ""; // Clear previous rows
-                if (rows.length === 0) {
-                    throw new Error("No more results");
-                }
                 rows.forEach(({ experience, username }, key) => {
                     const tr = document.createElement("tr");
                     const td1 = document.createElement("td");
