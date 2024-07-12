@@ -98,5 +98,5 @@ const updateLeaderboards = () => {
         });
 }
 
-updateLeaderboards();
 createPagination();
+updateLeaderboards();
