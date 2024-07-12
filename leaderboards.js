@@ -1,11 +1,13 @@
 const urlParams = new URLSearchParams(window.location.search);
 const page = parseInt(urlParams.get('page')) || 1;
 
-fetch("https://play.retro-mmo.com/constants.json").then((res) => {
+fetch("http://localhost:3000/constants.json").then((res) => {
     return res.json();
 }).then((constants) => {
     const entries = constants['leaderboards-entries'];
     const entriesPerPage = constants['leaderboards-entries-per-page'];
+    const lastPage = Math.ceil(entries / entriesPerPage);
+    console.log(lastPage);
 
     const createPagination = () => {
         const pagination = document.createElement('div');
@@ -21,13 +23,16 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
             pagination.appendChild(prevButton);
         }
 
-        const nextButton = document.createElement('button');
-        nextButton.id = 'next-button';
-        nextButton.innerText = 'Next';
-        nextButton.className = 'pagination-button';
-        nextButton.onclick = () => {
-            window.location.search = `?page=${page + 1}`;
-        };
+        if (page < lastPage) {
+            const nextButton = document.createElement('button');
+            nextButton.id = 'next-button';
+            nextButton.innerHTML = '&#8594;';
+            nextButton.className = 'pagination-button';
+            nextButton.onclick = () => {
+                window.location.search = `?page=${page + 1}`;
+            };
+            pagination.appendChild(nextButton);
+        }
 
         const pageInputLabel = document.createElement('label');
         pageInputLabel.innerText = 'Page: ';
@@ -38,7 +43,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
         pageInput.id = 'page-input';
         pageInput.type = 'number';
         pageInput.min = 1;
-        pageInput.max = Math.ceil(entries / entriesPerPage);
+        pageInput.max = lastPage;
         pageInput.value = page;
         pageInput.className = 'pagination-input';
         pageInput.onchange = () => {
@@ -48,7 +53,6 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
             }
         };
 
-        pagination.appendChild(nextButton);
         pagination.appendChild(pageInputLabel);
         pagination.appendChild(pageInput);
         document.querySelector('main').appendChild(pagination);
