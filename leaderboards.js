@@ -8,13 +8,17 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
     const entriesPerPage = constants["leaderboards-entries-per-page"];
     const lastPage = Math.ceil(entries / entriesPerPage);
 
-    const createPagination = () => {
+    const createPagination = (containerId) => {
+        const container = document.getElementById(containerId);
         const pagination = document.createElement("div");
-        pagination.id = "pagination";
+        pagination.className = "pagination";
+        
+        if (containerId === 'pagination-bottom') {
+            container.style.display = 'none'; // Initially hide bottom pagination
+        }
 
         if (page > 1) {
             const prevButton = document.createElement("button");
-            prevButton.id = "prev-button";
             prevButton.innerHTML = "&#8592;"; // Arrow symbol
             prevButton.className = "pagination-button";
             prevButton.onclick = () => {
@@ -25,7 +29,6 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         if (page < lastPage) {
             const nextButton = document.createElement("button");
-            nextButton.id = "next-button";
             nextButton.innerHTML = "&#8594;";
             nextButton.className = "pagination-button";
             nextButton.onclick = () => {
@@ -36,11 +39,11 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         const pageInputLabel = document.createElement("label");
         pageInputLabel.innerText = "Page: ";
-        pageInputLabel.setAttribute("for", "page-input");
+        pageInputLabel.setAttribute("for", `${containerId}-page-input`);
         pageInputLabel.className = "pagination-label";
 
         const pageInput = document.createElement("input");
-        pageInput.id = "page-input";
+        pageInput.id = `${containerId}-page-input`;
         pageInput.type = "number";
         pageInput.min = 1;
         pageInput.max = lastPage;
@@ -55,7 +58,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         pagination.appendChild(pageInputLabel);
         pagination.appendChild(pageInput);
-        document.querySelector("main").appendChild(pagination);
+        container.appendChild(pagination);
     };
 
     const updateLeaderboards = () => {
@@ -69,6 +72,9 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
             .then((rows) => {
                 const tbody = document.querySelector("table tbody");
                 tbody.innerHTML = ""; // Clear previous rows
+                if (rows.length === 0) {
+                    throw new Error("No more results");
+                }
                 rows.forEach(({ experience, username }, key) => {
                     const tr = document.createElement("tr");
                     const td1 = document.createElement("td");
@@ -91,24 +97,23 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
                 }
 
                 document.getElementById("leaderboards").removeAttribute("hidden");
+                document.getElementById("pagination-bottom").style.display = 'block'; // Show bottom pagination after loading
             })
             .catch((error) => {
                 if (error.message === "No more results") {
                     const message = document.createElement("p");
                     message.innerText = "No more results";
                     message.style.color = "#ffe737";
-                    const mainElement = document.querySelector("main");
-                    mainElement.insertBefore(message, document.getElementById("pagination"));
-                    document.getElementById("prev-button").onclick = () => {
-                        window.location.search = "?page=1";
-                    };
+                    const paginationTop = document.getElementById("pagination-top");
+                    paginationTop.parentNode.insertBefore(message, paginationTop); // Insert message above pagination-top
+                    document.getElementById("pagination-bottom").style.display = 'none';
                 } else {
                     console.error("An error occurred:", error);
                 }
             });
     }
 
-    createPagination();
+    createPagination('pagination-top');
+    createPagination('pagination-bottom');
     updateLeaderboards();
-})
-
+});
