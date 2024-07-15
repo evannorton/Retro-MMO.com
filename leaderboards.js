@@ -112,7 +112,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
                 } else {
                     console.error("An error occurred:", error);
                 }
-            });                
+            });
     }
 
     createPagination('pagination-top');
