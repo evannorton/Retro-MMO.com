@@ -131,6 +131,31 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const searchLeaderboard = async (query) => {
+        //-- RetroMMO BDAY Easter Egg --
+        if (query === "08142020") {
+            searchResults.innerHTML = ''; // Clear previous results
+            const resultContainer = document.createElement("div");
+            resultContainer.className = "result-container"; 
+    
+            const result = document.createElement("p");
+            result.innerHTML = "Happy Birthday RetroMMO!";
+            result.style.color = "#5ba8ff";
+            result.className = "search-result";
+            resultContainer.appendChild(result);
+    
+            const clearSearchButton = document.createElement("button");
+            clearSearchButton.innerHTML = "&times;";
+            clearSearchButton.className = "clear-search-button";
+            clearSearchButton.onclick = () => {
+                searchBar.value = '';
+                searchResults.innerHTML = '';
+            };
+    
+            resultContainer.appendChild(clearSearchButton);
+            searchResults.appendChild(resultContainer);
+            return; // Exit the function early
+        }
+        // -----------
         let page = 1;
         let found = false;
         searchResults.innerHTML = ''; // Clear previous results
