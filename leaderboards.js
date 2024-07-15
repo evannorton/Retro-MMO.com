@@ -19,6 +19,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         if (page > 1) {
             const prevButton = document.createElement("button");
+            prevButton.id = "prev-button";
             prevButton.innerHTML = "&#8592;"; // Arrow symbol
             prevButton.className = "pagination-button";
             prevButton.onclick = () => {
@@ -98,16 +99,20 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
             })
             .catch((error) => {
                 if (error.message === "No more results") {
+                    const totalShownEntries = lastPage * entriesPerPage;
                     const message = document.createElement("p");
-                    message.innerText = "No more results";
+                    message.innerText = `No more results. Only top ${totalShownEntries.toLocaleString()} shown.`;
                     message.style.color = "#ffe737";
                     const paginationTop = document.getElementById("pagination-top");
                     paginationTop.parentNode.insertBefore(message, paginationTop); // Insert message above pagination-top
                     document.getElementById("pagination-bottom").style.display = 'none';
+                    document.getElementById("prev-button").onclick = () => {
+                        window.location.search = `?page=${lastPage}`;
+                    };
                 } else {
                     console.error("An error occurred:", error);
                 }
-            });
+            });                
     }
 
     createPagination('pagination-top');
