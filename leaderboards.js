@@ -137,7 +137,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const searchingMessage = document.createElement("p");
         searchingMessage.innerText = "Searching...";
-        searchingMessage.style.color = "#ffffff";
+        searchingMessage.className = "search-message"; // Use CSS class for styling
         searchResults.appendChild(searchingMessage);
 
         while (!found) {
@@ -150,10 +150,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     const index = rows.findIndex(user => user.username === username) + 1 + (page - 1) * rows.length;
 
                     searchResults.innerHTML = ''; // Clear "Searching..." message
+                    const resultContainer = document.createElement("div");
+                    resultContainer.className = "result-container"; 
+
                     const result = document.createElement("p");
                     result.innerHTML = `#${index} ${username} - ${experience.toLocaleString()}`;
                     result.style.color = index === 1 ? "#ffbb31" : index === 2 ? "#a8a8a8" : index === 3 ? "#ad4e1a" : "white";
-                    searchResults.appendChild(result);
+                    result.className = "search-result";
+                    resultContainer.appendChild(result);
+
+                    const clearSearchButton = document.createElement("button");
+                    clearSearchButton.innerHTML = "&times;";
+                    clearSearchButton.className = "clear-search-button";
+                    clearSearchButton.onclick = () => {
+                        searchBar.value = '';
+                        searchResults.innerHTML = '';
+                    };
+
+                    resultContainer.appendChild(clearSearchButton);
+                    searchResults.appendChild(resultContainer);
                     found = true;
                 } else {
                     page++;
@@ -164,13 +179,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     const noResult = document.createElement("p");
                     noResult.innerText = "No results found";
                     noResult.style.color = "#ffe737";
+                    noResult.className = "search-message";
                     searchResults.appendChild(noResult);
                     found = true;
                 } else {
                     console.error("An error occurred:", error);
                     const errorResult = document.createElement("p");
                     errorResult.innerText = "An error occurred while searching";
-                    errorResult.style.color = "#ff0000";
+                    errorResult.className = "search-message";
                     searchResults.appendChild(errorResult);
                     found = true;
                 }
