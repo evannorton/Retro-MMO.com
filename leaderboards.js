@@ -8,13 +8,17 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
     const entriesPerPage = constants["leaderboards-entries-per-page"];
     const lastPage = Math.ceil(entries / entriesPerPage);
 
-    const createPagination = () => {
+    const createPagination = (containerId) => {
+        const container = document.getElementById(containerId);
         const pagination = document.createElement("div");
-        pagination.id = "pagination";
+        pagination.className = "pagination";
+        
+        if (containerId === 'pagination-bottom') {
+            container.style.display = 'none'; // Initially hide bottom pagination
+        }
 
         if (page > 1) {
             const prevButton = document.createElement("button");
-            prevButton.id = "prev-button";
             prevButton.innerHTML = "&#8592;"; // Arrow symbol
             prevButton.className = "pagination-button";
             prevButton.onclick = () => {
@@ -25,7 +29,6 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         if (page < lastPage) {
             const nextButton = document.createElement("button");
-            nextButton.id = "next-button";
             nextButton.innerHTML = "&#8594;";
             nextButton.className = "pagination-button";
             nextButton.onclick = () => {
@@ -36,11 +39,11 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         const pageInputLabel = document.createElement("label");
         pageInputLabel.innerText = "Page: ";
-        pageInputLabel.setAttribute("for", "page-input");
+        pageInputLabel.setAttribute("for", `${containerId}-page-input`);
         pageInputLabel.className = "pagination-label";
 
         const pageInput = document.createElement("input");
-        pageInput.id = "page-input";
+        pageInput.id = `${containerId}-page-input`;
         pageInput.type = "number";
         pageInput.min = 1;
         pageInput.max = lastPage;
@@ -55,7 +58,7 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
 
         pagination.appendChild(pageInputLabel);
         pagination.appendChild(pageInput);
-        document.querySelector("main").appendChild(pagination);
+        container.appendChild(pagination);
     };
 
     const updateLeaderboards = () => {
@@ -91,24 +94,132 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
                 }
 
                 document.getElementById("leaderboards").removeAttribute("hidden");
+                document.getElementById("pagination-bottom").style.display = 'block'; // Show bottom pagination after loading
             })
             .catch((error) => {
                 if (error.message === "No more results") {
                     const message = document.createElement("p");
                     message.innerText = "No more results";
                     message.style.color = "#ffe737";
-                    const mainElement = document.querySelector("main");
-                    mainElement.insertBefore(message, document.getElementById("pagination"));
-                    document.getElementById("prev-button").onclick = () => {
-                        window.location.search = "?page=1";
-                    };
+                    const paginationTop = document.getElementById("pagination-top");
+                    paginationTop.parentNode.insertBefore(message, paginationTop); // Insert message above pagination-top
+                    document.getElementById("pagination-bottom").style.display = 'none';
                 } else {
                     console.error("An error occurred:", error);
                 }
             });
     }
 
-    createPagination();
+    createPagination('pagination-top');
+    createPagination('pagination-bottom');
     updateLeaderboards();
-})
+});
 
+document.addEventListener("DOMContentLoaded", () => {
+    const searchBar = document.getElementById("search-bar");
+    const searchButton = document.getElementById("search-button");
+    const searchResults = document.getElementById("search-results");
+
+    const fetchPageData = (page) => {
+        return fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("No more results");
+                }
+                return res.json();
+            });
+    };
+
+    const createClearSearchButton = () => {
+        const clearSearchButton = document.createElement("button");
+        clearSearchButton.innerHTML = "&times;";
+        clearSearchButton.className = "clear-search-button";
+        clearSearchButton.onclick = () => {
+            searchBar.value = '';
+            searchResults.innerHTML = '';
+        };
+        return clearSearchButton;
+    };
+
+    const searchLeaderboard = async (query) => {
+        //-- RetroMMO BDAY Easter Egg --
+        if (query === "08142020") {
+            searchResults.innerHTML = ''; // Clear previous results
+            const resultContainer = document.createElement("div");
+            resultContainer.className = "result-container"; 
+    
+            const result = document.createElement("p");
+            result.innerHTML = "Happy Birthday RetroMMO!";
+            result.style.color = "#5ba8ff";
+            result.className = "search-result";
+            resultContainer.appendChild(result);
+    
+            const clearSearchButton = createClearSearchButton();
+            resultContainer.appendChild(clearSearchButton);
+            searchResults.appendChild(resultContainer);
+            return; // Exit the function early
+        }
+        // -----------
+        let page = 1;
+        let found = false;
+        searchResults.innerHTML = ''; // Clear previous results
+
+        const searchingMessage = document.createElement("p");
+        searchingMessage.innerText = "Searching...";
+        searchingMessage.className = "search-message"; // Use CSS class for styling
+        searchResults.appendChild(searchingMessage);
+
+        while (!found) {
+            try {
+                const rows = await fetchPageData(page);
+                const entry = rows.find(({ username }) => username.toLowerCase() === query.toLowerCase());
+
+                if (entry) {
+                    const { username, experience } = entry;
+                    const index = rows.findIndex(user => user.username === username) + 1 + (page - 1) * rows.length;
+
+                    searchResults.innerHTML = ''; // Clear "Searching..." message
+                    const resultContainer = document.createElement("div");
+                    resultContainer.className = "result-container"; 
+
+                    const result = document.createElement("p");
+                    result.innerHTML = `#${index} ${username} - ${experience.toLocaleString()}`;
+                    result.style.color = index === 1 ? "#ffbb31" : index === 2 ? "#a8a8a8" : index === 3 ? "#ad4e1a" : "white";
+                    result.className = "search-result";
+                    resultContainer.appendChild(result);
+
+                    const clearSearchButton = createClearSearchButton();
+                    resultContainer.appendChild(clearSearchButton);
+                    searchResults.appendChild(resultContainer);
+                    found = true;
+                } else {
+                    page++;
+                }
+            } catch (error) {
+                searchResults.innerHTML = ''; // Clear "Searching..." message
+                if (error.message === "No more results") {
+                    const noResult = document.createElement("p");
+                    noResult.innerText = "No results found";
+                    noResult.style.color = "#ffe737";
+                    noResult.className = "search-message";
+                    searchResults.appendChild(noResult);
+                    found = true;
+                } else {
+                    console.error("An error occurred:", error);
+                    const errorResult = document.createElement("p");
+                    errorResult.innerText = "An error occurred while searching";
+                    errorResult.className = "search-message";
+                    searchResults.appendChild(errorResult);
+                    found = true;
+                }
+            }
+        }
+    };
+
+    searchButton.addEventListener("click", () => searchLeaderboard(searchBar.value));
+    searchBar.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            searchLeaderboard(searchBar.value);
+        }
+    });
+});
