@@ -130,6 +130,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
     };
 
+    const createClearSearchButton = () => {
+        const clearSearchButton = document.createElement("button");
+        clearSearchButton.innerHTML = "&times;";
+        clearSearchButton.className = "clear-search-button";
+        clearSearchButton.onclick = () => {
+            searchBar.value = '';
+            searchResults.innerHTML = '';
+        };
+        return clearSearchButton;
+    };
+
     const searchLeaderboard = async (query) => {
         //-- RetroMMO BDAY Easter Egg --
         if (query === "08142020") {
@@ -143,14 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
             result.className = "search-result";
             resultContainer.appendChild(result);
     
-            const clearSearchButton = document.createElement("button");
-            clearSearchButton.innerHTML = "&times;";
-            clearSearchButton.className = "clear-search-button";
-            clearSearchButton.onclick = () => {
-                searchBar.value = '';
-                searchResults.innerHTML = '';
-            };
-    
+            const clearSearchButton = createClearSearchButton();
             resultContainer.appendChild(clearSearchButton);
             searchResults.appendChild(resultContainer);
             return; // Exit the function early
@@ -184,14 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     result.className = "search-result";
                     resultContainer.appendChild(result);
 
-                    const clearSearchButton = document.createElement("button");
-                    clearSearchButton.innerHTML = "&times;";
-                    clearSearchButton.className = "clear-search-button";
-                    clearSearchButton.onclick = () => {
-                        searchBar.value = '';
-                        searchResults.innerHTML = '';
-                    };
-
+                    const clearSearchButton = createClearSearchButton();
                     resultContainer.appendChild(clearSearchButton);
                     searchResults.appendChild(resultContainer);
                     found = true;
