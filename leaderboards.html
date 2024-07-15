@@ -55,7 +55,14 @@
     </header>
     <main>
         <h1>Leaderboards</h1>
-        <div id="pagination-top"></div>
+        <div id="search-pagination-container">
+            <div id="search-bar-container">
+                <input type="text" id="search-bar" placeholder="Search username..." />
+                <button id="search-button">Search</button>
+            </div>
+            <div id="pagination-top"></div>
+        </div>
+        <div id="search-results"></div>
         <table id="leaderboards" hidden>
             <thead>
                 <tr>
@@ -70,7 +77,9 @@
             </thead>
             <tbody></tbody>
         </table>
-        <div id="pagination-bottom"></div>
+        <div id="pagination-bottom-container">
+            <div id="pagination-bottom"></div>
+        </div>
     </main>
     
     <footer>

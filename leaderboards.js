@@ -114,3 +114,74 @@ fetch("https://play.retro-mmo.com/constants.json").then((res) => {
     createPagination('pagination-bottom');
     updateLeaderboards();
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const searchBar = document.getElementById("search-bar");
+    const searchButton = document.getElementById("search-button");
+    const searchResults = document.getElementById("search-results");
+
+    const fetchPageData = (page) => {
+        return fetch(`https://play.retro-mmo.com/leaderboards.json?page=${page}`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error("No more results");
+                }
+                return res.json();
+            });
+    };
+
+    const searchLeaderboard = async (query) => {
+        let page = 1;
+        let found = false;
+        searchResults.innerHTML = ''; // Clear previous results
+
+        const searchingMessage = document.createElement("p");
+        searchingMessage.innerText = "Searching...";
+        searchingMessage.style.color = "#ffffff";
+        searchResults.appendChild(searchingMessage);
+
+        while (!found) {
+            try {
+                const rows = await fetchPageData(page);
+                const entry = rows.find(({ username }) => username.toLowerCase() === query.toLowerCase());
+
+                if (entry) {
+                    const { username, experience } = entry;
+                    const index = rows.findIndex(user => user.username === username) + 1 + (page - 1) * rows.length;
+
+                    searchResults.innerHTML = ''; // Clear "Searching..." message
+                    const result = document.createElement("p");
+                    result.innerHTML = `#${index} ${username} - ${experience.toLocaleString()}`;
+                    result.style.color = index === 1 ? "#ffbb31" : index === 2 ? "#a8a8a8" : index === 3 ? "#ad4e1a" : "white";
+                    searchResults.appendChild(result);
+                    found = true;
+                } else {
+                    page++;
+                }
+            } catch (error) {
+                searchResults.innerHTML = ''; // Clear "Searching..." message
+                if (error.message === "No more results") {
+                    const noResult = document.createElement("p");
+                    noResult.innerText = "No results found";
+                    noResult.style.color = "#ffe737";
+                    searchResults.appendChild(noResult);
+                    found = true;
+                } else {
+                    console.error("An error occurred:", error);
+                    const errorResult = document.createElement("p");
+                    errorResult.innerText = "An error occurred while searching";
+                    errorResult.style.color = "#ff0000";
+                    searchResults.appendChild(errorResult);
+                    found = true;
+                }
+            }
+        }
+    };
+
+    searchButton.addEventListener("click", () => searchLeaderboard(searchBar.value));
+    searchBar.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+            searchLeaderboard(searchBar.value);
+        }
+    });
+});
