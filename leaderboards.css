@@ -1,13 +1,137 @@
 @import "./global.css";
 
-table tbody tr:first-child td:nth-child(2) {
-    color: #ffbb31;
+.pagination-button {
+    margin-right: 5px;
 }
 
-table tbody tr:nth-child(2) td:nth-child(2) {
-    color: #a8a8a8;
+.pagination-label {
+    margin-left: 10px;
+    margin-right: 5px;
 }
 
-table tbody tr:nth-child(3) td:nth-child(2) {
-    color: #ad4e1a;
+.pagination-input {
+    width: 50px;
+    padding: 2px;
+    text-align: center;
+    border-radius: 15px; 
+    background-color: #595956; 
+    border: none;
+    color: white;
+}
+
+#pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+#search-pagination-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#search-bar-container {
+    display: flex;
+    align-items: center;
+}
+
+#search-bar {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    font-size: 26px; 
+}
+
+#search-button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #555;
+}
+
+#pagination-top,
+#pagination-bottom-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#search-results {
+    text-align: left;
+    margin-top: 10px;
+    color: white;
+}
+
+.search-message {
+    color: #ffffff;
+    text-align: center;
+}
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.search-result {
+    color: white;
+    margin: 0;
+}
+
+/* Button that closes the search results and resets the search */
+.clear-search-button {
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.clear-search-button:hover {
+    background-color: #555;
+}
+
+/* Media query for smaller devices */
+@media (max-width: 600px) {
+    #search-pagination-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #search-bar-container {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+    }
+
+    #search-bar {
+        width: 140px; /* Adjust as needed for smaller devices */
+        font-size: 20px;
+    }
+
+    #search-button {
+        width: 70px; /* Adjust as needed for smaller devices */
+        padding: 5px;
+    }
+
+    /* center pagination at bottom since top will be centered */
+    #pagination-bottom-container {
+        justify-content: center; 
+        margin-top: 10px; 
+    }
 }
