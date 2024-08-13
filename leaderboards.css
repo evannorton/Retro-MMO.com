@@ -1,19 +1,24 @@
 @import "./global.css";
 
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
 .pagination-button {
-    margin-right: 5px;
+    margin-right: .25em;
 }
 
 .pagination-label {
-    margin-left: 10px;
-    margin-right: 5px;
+    margin-left: .5em;
+    margin-right: .25em;
 }
 
 .pagination-input {
-    width: 50px;
-    padding: 2px;
+    width: 1.5em;
+    padding: .125em;
     text-align: center;
-    border-radius: 15px; 
+    border-radius: .25em; 
     background-color: #595956; 
     border: none;
     color: white;
@@ -23,14 +28,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 1em;
 }
 
 #search-pagination-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 1em;
 }
 
 #search-bar-container {
@@ -39,17 +44,17 @@
 }
 
 #search-bar {
-    width: 200px;
-    padding: 5px;
-    border-radius: 5px;
+    width: 7.5em;
+    padding: .125em;
+    border-radius: .25em;
     border: 1px solid #ccc;
-    margin-right: 10px;
-    font-size: 26px; 
+    margin-right: .5em;
+    font-size: .85em; 
 }
 
 #search-button {
-    padding: 5px 10px;
-    border-radius: 5px;
+    padding: .125em .25em;
+    border-radius: .25em;
     border: none;
     background-color: #333;
     color: white;
@@ -95,11 +100,12 @@
     background-color: #333;
     color: white;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    padding: 5px 10px;
-    margin-left: 10px;
+    border-radius: .25em;
+    cursor: pointer;    
+    padding: .1em;
+    width: 1.25em;
+    height: 1.25em;
+    margin-left: .5em;
 }
 
 .clear-search-button:hover {
@@ -107,31 +113,9 @@
 }
 
 /* Media query for smaller devices */
-@media (max-width: 600px) {
+@media (max-width: 960px) {
     #search-pagination-container {
         flex-direction: column;
         align-items: center;
-    }
-
-    #search-bar-container {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 10px;
-    }
-
-    #search-bar {
-        width: 140px; /* Adjust as needed for smaller devices */
-        font-size: 20px;
-    }
-
-    #search-button {
-        width: 70px; /* Adjust as needed for smaller devices */
-        padding: 5px;
-    }
-
-    /* center pagination at bottom since top will be centered */
-    #pagination-bottom-container {
-        justify-content: center; 
-        margin-top: 10px; 
     }
 }
