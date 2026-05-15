@@ -1,0 +1,14 @@
+{
+  "name": "retrommo-website",
+  "version": "1.0.0",
+  "description": "RetroMMO website",
+  "main": "server.js",
+  "scripts": {
+    "build": "node build.js",
+    "start": "node server.js",
+    "dev": "npm run build && node server.js"
+  },
+  "dependencies": {
+    "express": "4.18.2"
+  }
+}
