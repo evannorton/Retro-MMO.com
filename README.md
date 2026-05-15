@@ -6,12 +6,7 @@ Static website for RetroMMO with organized file structure and build process.
 
 ```
 src/
-├── assets/          # Images, fonts, and other static assets
-├── css/            # Stylesheets
-├── html/           # HTML pages
-├── js/             # JavaScript files
-├── robots.txt      # Search engine directives
-└── sitemap.xml     # Site structure for search engines
+└── static/         # All static files (HTML, CSS, JS, images, fonts, etc.)
 ```
 
 ## Development
@@ -32,15 +27,15 @@ src/
 
 ### Build Process
 
-The build process is controlled by `static.json` which specifies which files/folders to copy to the `/out` directory:
+The build process copies everything from `src/static/` to `/out`:
 
 - Run build only: `npm run build`
-- Files are copied from `src/` to `out/` based on `static.json`
+- All files are copied from `src/static/` to `out/`
 - The server serves files from `/out`
 
 ### Adding New Pages
 
-1. Add your HTML file to `src/html/`
+1. Add your HTML file to `src/static/`
 2. The server will automatically create a route for it
 3. `index.html` serves at `/`, other files serve at `/{filename}`
 
@@ -63,6 +58,6 @@ For other hosting platforms:
 
 ## Configuration
 
-- `static.json`: Controls which files are included in the build
+- `build.js`: Build script that copies `src/static/` to `out/`
 - `package.json`: npm scripts and dependencies
 - `.github/workflows/deploy.yml`: GitHub Pages deployment configuration

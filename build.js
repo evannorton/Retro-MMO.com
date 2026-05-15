@@ -1,36 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 
-// Build function to copy files from static.json to /out
+// Build function to copy src/static to /out
 function buildStatic() {
-  const staticConfig = JSON.parse(fs.readFileSync('static.json', 'utf8'));
+  const srcStaticDir = path.join(__dirname, 'src', 'static');
   const outDir = path.join(__dirname, 'out');
   
   // Clean out directory
   if (fs.existsSync(outDir)) {
     fs.rmSync(outDir, { recursive: true, force: true });
   }
-  fs.mkdirSync(outDir, { recursive: true });
   
-  // Copy each path specified in static.json
-  staticConfig.forEach(srcPath => {
-    const sourcePath = path.join(__dirname, srcPath);
-    const fileName = path.basename(srcPath);
-    const destPath = path.join(outDir, fileName);
-    
-    if (fs.existsSync(sourcePath)) {
-      if (fs.statSync(sourcePath).isDirectory()) {
-        // Copy directory recursively
-        fs.cpSync(sourcePath, destPath, { recursive: true });
-      } else {
-        // Copy file
-        fs.copyFileSync(sourcePath, destPath);
-      }
-      console.log(`Copied: ${srcPath} -> out/${fileName}`);
-    } else {
-      console.warn(`Warning: ${srcPath} does not exist`);
-    }
-  });
+  // Copy src/static to out
+  if (fs.existsSync(srcStaticDir)) {
+    fs.cpSync(srcStaticDir, outDir, { recursive: true });
+    console.log('Copied: src/static -> out');
+  } else {
+    console.error('Error: src/static directory does not exist');
+    process.exit(1);
+  }
   
   console.log('Build complete!');
 }
