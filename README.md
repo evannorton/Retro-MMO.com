@@ -6,7 +6,14 @@ Static website for RetroMMO with organized file structure and build process.
 
 ```
 src/
-└── static/         # All static files (HTML, CSS, JS, images, fonts, etc.)
+├── template.mustache    # Main HTML template
+├── pages/              # Page content and metadata
+│   ├── index.html      # Page content (just the main section)
+│   ├── index.json      # Page metadata (title, description, etc.)
+│   ├── play.html
+│   ├── play.json
+│   └── ...
+└── static/             # Static assets (CSS, JS, images, fonts, etc.)
 ```
 
 ## Development
@@ -27,17 +34,32 @@ src/
 
 ### Build Process
 
-The build process copies everything from `src/static/` to `/out`:
+The build process uses Mustache templating:
 
 - Run build only: `npm run build`
-- All files are copied from `src/static/` to `out/`
+- Copies static files from `src/static/` to `out/`
+- Uses `src/template.mustache` as the main template
+- Combines page content from `src/pages/*.html` with metadata from `src/pages/*.json`
+- Generates final HTML files in `/out`
 - The server serves files from `/out`
 
 ### Adding New Pages
 
-1. Add your HTML file to `src/static/`
-2. The server will automatically create a route for it
-3. `index.html` serves at `/`, other files serve at `/{filename}`
+1. Add your content HTML file to `src/pages/` (just the main content, no full HTML structure)
+2. Add corresponding JSON file with metadata (title, description, css, etc.)
+3. Run `npm run build` to generate the final HTML
+4. The server will automatically create a route for it
+5. `index.html` serves at `/`, other files serve at `/{filename}`
+
+### Template Variables
+
+Each page can use these variables in its JSON file:
+- `title`: Page title
+- `description`: Meta description
+- `keywords`: Meta keywords  
+- `canonical`: Canonical URL
+- `css`: CSS file path
+- `js`: JavaScript file path (optional)
 
 ## Deployment
 

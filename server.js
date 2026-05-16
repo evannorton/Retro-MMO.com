@@ -9,16 +9,18 @@ app.use(express.static(path.join(__dirname, 'out')));
 
 // Dynamically create routes for all HTML files
 const outDir = path.join(__dirname, 'out');
-const htmlFiles = fs.readdirSync(outDir).filter(file => file.endsWith('.html'));
+if (fs.existsSync(outDir)) {
+  const htmlFiles = fs.readdirSync(outDir).filter(file => file.endsWith('.html'));
 
-htmlFiles.forEach(file => {
-  const routeName = file.replace('.html', '');
-  const routePath = routeName === 'index' ? '/' : `/${routeName}`;
-  
-  app.get(routePath, (req, res) => {
-    res.sendFile(path.join(outDir, file));
+  htmlFiles.forEach(file => {
+    const routeName = file.replace('.html', '');
+    const routePath = routeName === 'index' ? '/' : `/${routeName}`;
+    
+    app.get(routePath, (req, res) => {
+      res.sendFile(path.join(outDir, file));
+    });
   });
-});
+}
 
 // 404 handler for all other routes
 app.get('*', (req, res) => {

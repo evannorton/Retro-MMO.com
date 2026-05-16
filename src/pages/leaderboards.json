@@ -1,0 +1,8 @@
+{
+  "title": "Leaderboards - RetroMMO",
+  "description": "Player rankings for RetroMMO",
+  "keywords": "retrommo leaderboards, retrommo highscores, retrommo rankings, retrommo standings",
+  "canonical": "https://retro-mmo.com/leaderboards",
+  "css": "./leaderboards.css",
+  "js": "./leaderboards.js"
+}
